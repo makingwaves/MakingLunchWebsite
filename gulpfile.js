@@ -8,6 +8,7 @@ var imageMin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var runSequence = require('run-sequence');
+var babel = require('gulp-babel');
 
 gulp.task('sass', function() {
     return gulp.src('app/scss/**/*.scss')
@@ -26,7 +27,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('minify-js', function() {
-    return gulp.src('app/js/**/*.js')
+    return gulp.src('temp/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
@@ -63,17 +64,28 @@ gulp.task('clean:dist', function() {
     return del.sync('dist');
 });
 
+gulp.task('clean:temp', function() {
+    return del.sync('temp');
+});
+
 gulp.task('cache:clear', function(callback) {
     return cache.clearAll('callback');
 });
 
-gulp.task('test', function() {
-
+gulp.task('babel', function() {
+    return gulp.src([
+            'app/js/main.js',
+            'js/*.js'
+        ])
+        .pipe(babel({presets: ['es2015']}))
+        .pipe(gulp.dest('temp'))
 });
 
 gulp.task('build', function(callback) {
     runSequence('clean:dist',
-        ['sass', 'images', 'fonts', 'minify-html', 'minify-css', 'minify-js'],
+        ['sass', 'babel', 'images', 'fonts'],
+        ['minify-css', 'minify-js', 'minify-html'],
+        'clean:temp',
         callback
     )
 });

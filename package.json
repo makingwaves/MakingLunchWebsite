@@ -17,8 +17,14 @@
   },
   "homepage": "https://github.com/makingwaves/MakingLunchWebsite#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "browserslist": "^4.3.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
     "gulp-cache": "^1.0.2",
     "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^4.0.2",
@@ -27,6 +33,8 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
     "gulp-cssnano": "^2.1.3",
     "gulp-htmlmin": "^5.0.1"
   }
