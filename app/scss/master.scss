@@ -1,13 +1,52 @@
 /* ==========================================================================
-   Main CSS file
+ * MASTER
+ * Main CSS file
 ========================================================================== */
 
 
 
 
+/* Variable definitions
+========================================================================== */
+
+
+/* Color variables  */
+
+$baseColor: #eee6e4;
+$baseColorDarkened: #e4dad7;
+$bubbleDarkColor: #5b4663;
+$bubbleLightColor: #ffffff;
+$contrastColor: #5b4663;
+$contrastColorDarkened: #513f58;
+$textDarkColor: #5b4663;
+$textLightColor: #ffffff;
+
+/* Other variables  */
+
+$sidesHorizontal: ["left", "right"];
+$sidesVertical: ["top", "bottom"];
+
+
+/* Mixins
+========================================================================== */
+
+
+@mixin transform($param) {
+    -webkit-transform: $param;
+        -ms-transform: $param;
+            transform: $param;
+}
+
+@mixin clip($param) {
+    -webkit-clip-path: $param;
+            clip-path: $param;
+}
+
+
+/* Importing css files
+========================================================================== */
+
+
 @import "reset";
 @import "framework";
 @import "elements";
-@import "pages";
-@import "ie-fallback";
-@import "print";

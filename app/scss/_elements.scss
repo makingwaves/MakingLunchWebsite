@@ -1,0 +1,133 @@
+/* ==========================================================================
+ * ELEMENTS
+ * Elements repeatable throughout the whole page
+========================================================================== */
+
+
+
+
+/* Speech bubbles
+========================================================================== */
+
+
+.bubble {
+    border-radius: 1.875rem;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 1.875rem 0;
+    max-width: 77.19%;
+    padding: 1.875rem;
+
+    &--big {
+        border-radius: 2.5rem;
+    }
+
+    &--light {
+        background-color: $bubbleLightColor;
+        color: $textDarkColor;
+    }
+
+    &--dark {
+        background-color: $bubbleDarkColor;
+        color: $textLightColor;
+    }
+
+    &:nth-child(odd) {
+        clear: right;
+        float: left;
+    }
+
+    &:nth-child(even) {
+        clear: left;
+        float: right;
+    }
+}
+
+
+/*
+ * Adds a tail to the element
+ */
+
+
+.tail {
+    box-sizing: border-box;
+    position: relative;
+
+    @each $v, $i in $sidesVertical {
+        @each $h, $j in $sidesHorizontal {
+            &--#{$v}-#{$h} {
+                border-#{$v}-#{$h}-radius: 0;
+
+                /* Borders for older browsers */
+
+                &::before {
+                    background-image: linear-gradient(to #{$h}, rgba(0, 0, 0, 0.2), transparent);
+                    border-#{$h}: 1.875rem solid $bubbleDarkColor;
+                    border-#{$v}: 1.875rem solid transparent;
+                    border-#{$v}-style: solid;
+                    border-#{$h}-style: solid;
+                    border-width: 1.875rem;
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    #{$v}: -1.875rem;
+                    #{$h}: 0;
+                }
+            }
+        }
+    }
+
+    /* Clip path for browsers that are not IE */
+
+    @supports (clip-path: polygon(0 0, 0 0, 0 0)) or (-webkit-clip-path: polygon(0 0, 0 0, 0 0)) {
+        &::before {
+            border: none;
+            height: 1.875rem;
+            width: 1.875rem;
+        }
+
+        &--top-left::before {
+            @include clip(polygon(0 0, 100% 100%, 0 100%));
+        }
+
+        &--bottom-left::before {
+            @include clip(polygon(0 0, 100% 0, 0 100%));
+        }
+
+        &--bottom-right::before {
+            @include clip(polygon(0 0, 100% 0, 100% 100%));
+        }
+
+        &--light::before {
+            background-color: $bubbleLightColor;
+        }
+
+        &--dark::before {
+            background-color: $bubbleDarkColor;
+        }
+    }
+}
+
+
+/* Lazy load elements, animated on page load
+========================================================================== */
+
+
+.lazy-load {
+    opacity: 0;
+    @include transform(translateY(2rem) scale(1.15));
+    transform-origin: 50% 0;
+    transition: 1s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.7, 1);
+
+    /*
+     * Show content when element is in wievport
+     * and when user has disabled javascript in their browser
+     */
+
+     &--show,
+     .no-js & {
+         opacity: 1;
+         @include transform(translateY(0) scale(1));
+     }
+}

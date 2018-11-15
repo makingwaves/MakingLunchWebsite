@@ -1,0 +1,33 @@
+/* ==========================================================================
+ * FRAMEWORK
+ * Main page layout
+========================================================================== */
+
+
+
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: $baseColor;
+    color: $textLightColor;
+    font: normal 100%/1 "Avenir Next", Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+h1 {
+    font-size: 4.06rem;
+    font-weight: 700;
+    margin-bottom: 0.15em;
+}
+
+p {
+    line-height: 1.125rem;
+    text-align: justify;
+    text-align-last: left;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 570px;
+}
