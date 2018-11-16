@@ -6,6 +6,10 @@
 
 
 
+/* Classless elements
+========================================================================== */
+
+
 body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -13,6 +17,10 @@ body {
     color: $textLightColor;
     font: normal 100%/1 "Avenir Next", Arial, sans-serif;
     text-rendering: optimizeLegibility;
+}
+
+a {
+    color: inherit;
 }
 
 h1 {
@@ -27,7 +35,80 @@ p {
     text-align-last: left;
 }
 
+
+/* Content wrappers
+========================================================================== */
+
+
 .wrapper {
+    box-sizing: border-box;
     margin: 0 auto;
-    max-width: 570px;
+    max-width: 100%;
+    width: 570px;
+
+    &--big {
+        width: 1000px;
+    }
+
+    &--fixed {
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+    }
 }
+
+.flex {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    &--centered {
+        justify-content: center;
+    }
+}
+
+
+/* Website header
+========================================================================== */
+
+
+.header {
+    border-radius: 0 0 1.0625rem 1.0625rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    height: 3.75rem;
+    padding: 0 24px 0 10px;
+
+    &__button {
+        background-color: $baseColor;
+        border-radius: 1.0625rem;
+        color: $textDarkColor;
+        font-size: 1rem;
+        padding: 0.625rem 1.625rem;
+    }
+
+    &__logo {
+        height: 2.5rem;
+        padding-right: 0.875rem;
+    }
+
+    &__title {
+        color: $baseColor;
+    }
+}
+
+
+/* Website footer
+========================================================================== */
+
+
+.footer {
+
+}
+
+
+/* Element states
+========================================================================== */
+
+
+::-moz-selection { background: $accentColor }
+     ::selection { background: $accentColor }
