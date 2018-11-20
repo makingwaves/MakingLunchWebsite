@@ -29,9 +29,9 @@
 
         });
 
-        function isInViewport($element, offset) {
-            let elementTop = $element.offsetTop + offset;
-            let elementBottom = elementTop + $element.offsetHeight;
+        function isInViewport(element, offset) {
+            let elementTop = element.offsetTop + element.offsetParent.offsetTop + offset;
+            let elementBottom = elementTop + element.offsetHeight;
             let viewportTop = window.scrollY;
             let viewportBottom = viewportTop + window.outerHeight;
             return elementBottom > viewportTop && elementTop < viewportBottom;
