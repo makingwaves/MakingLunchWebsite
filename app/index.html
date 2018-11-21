@@ -2,10 +2,10 @@
 <html class="no-js" dir="ltr" lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title></title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
 
         <link rel="manifest" href="site.webmanifest">
         <link rel="apple-touch-icon" href="">
@@ -14,37 +14,129 @@
         <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
-        <section>
-            <main class="wrapper">
-                <div class="bubble bubble--dark bubble--big tail tail--dark tail--top-left lazy-load" js-lazy-load>
+        <!-- SVG SPRITES START -->
+        <svg class="svg-sprites">
+            <defs>
+                <symbol id="clock" viewBox="0 0 59 59">
+                    <path d="M29.5 4.917C15.945 4.917 4.917 15.945 4.917 29.5c0 13.555 11.028 24.583 24.583 24.583 13.555 0 24.583-11.028 24.583-24.583 0-13.555-11.028-24.583-24.583-24.583M29.5 59C13.233 59 0 45.767 0 29.5S13.233 0 29.5 0 59 13.233 59 29.5 45.767 59 29.5 59m9.83-22.125c-.368 0-.744-.084-1.096-.258L28.401 31.7a2.461 2.461 0 0 1-1.36-2.2V12.292a2.46 2.46 0 0 1 4.917 0V27.98l8.474 4.238a2.46 2.46 0 0 1-1.101 4.656"/>
+                </symbol>
+                <symbol id="map-marker" viewBox="0 0 39 59">
+                    <path d="M19.5 28c-4.687 0-8.5-3.815-8.5-8.5 0-4.685 3.813-8.5 8.5-8.5 4.69 0 8.5 3.815 8.5 8.5 0 4.685-3.81 8.5-8.5 8.5m0-28C8.748 0 0 8.82 0 19.667c0 10.433 17.728 37.63 18.484 38.78.224.342.606.553 1.016.553.41 0 .79-.209 1.016-.553C21.275 57.297 39 30.1 39 19.667 39 8.823 30.252 0 19.5 0"/>
+                </symbol>
+                <symbol id="people" viewBox="0 0 61 61">
+                    <path d="M22.394 48.179c-1.04-3-3.348-5.433-6.292-6.7 1.85-1.37 3.067-3.52 3.067-5.958 0-4.14-3.44-7.5-7.667-7.5s-7.667 3.36-7.667 7.5c0 2.435 1.214 4.585 3.06 5.955C2.84 43.22-.002 47.171-.002 51.77c0 .69.573 1.25 1.278 1.232h16.885a14.033 14.033 0 0 1 4.232-4.822M39 48.173c1.022-3.002 3.289-5.436 6.181-6.705-1.818-1.371-3.013-3.523-3.013-5.962 0-4.143 3.38-7.506 7.532-7.506s7.532 3.363 7.532 7.506c0 2.437-1.193 4.588-3.005 5.96C58.208 43.209 61 47.165 61 51.766c0 .69-.562 1.251-1.255 1.234H43.157A13.94 13.94 0 0 0 39 48.173"/>
+                    <path d="M40.5 61c.69 0 1.25-.54 1.25-1.232 0-4.598-2.78-8.55-6.742-10.293C36.813 48.105 38 45.953 38 43.518c0-4.138-3.365-7.5-7.5-7.5s-7.5 3.362-7.5 7.5c0 2.435 1.188 4.587 2.993 5.957-3.963 1.743-6.743 5.695-6.743 10.293 0 .693.56 1.233 1.25 1.233h20zM35.505 15.356H34.32v5.44a.782.782 0 0 1-.787.775.782.782 0 0 1-.787-.775V3.716a.786.786 0 1 1 1.383-.498c1.304 1.232 1.752 6.86 1.762 11.75a.39.39 0 0 1 .008.078c0 .213-.178.31-.394.31zM30.391 7.21c0 1.442-1.006 2.656-2.358 3.002v10.583a.782.782 0 0 1-.787.775.782.782 0 0 1-.787-.775V10.213c-1.352-.346-2.355-1.56-2.355-3.002V3.716a.78.78 0 0 1 .784-.775c.435 0 .787.348.787.775V7.21c0 .571.316 1.066.784 1.336V3.716c0-.427.352-.775.787-.775.435 0 .787.348.787.775v4.83c.465-.269.784-.764.784-1.335V3.716c0-.427.352-.775.787-.775.435 0 .787.348.787.775V7.21zM44.143 0H15.857C13.731 0 12 1.692 12 3.79v17.778c0 2.1 1.73 3.81 3.857 3.81h2.04l7.336 7.246c.249.244.576.376.91.376a1.28 1.28 0 0 0 1.286-1.27v-6.352h16.714c2.129 0 3.857-1.71 3.857-3.81V3.79C48 1.692 46.272 0 44.143 0z"/>
+                </symbol>
+            </defs>
+        </svg>
+        <!-- SVG SPRITES END -->
+        <!-- HEADER START -->
+        <header class="wrapper--fixed">
+            <div class="header wrapper wrapper--big flex bg--dark">
+                <a href="" class="flex">
+                    <img src="images/logo.png" alt="Making Lunch logo" class="header__logo">
+                    <span class="header__title u-text--bold">Making Lunch</span>
+                </a>
+                <a href="" class="u-text--bold header__button">
+                    Get the app
+                </a>
+            </div>
+        </header>
+        <!-- HEADER END -->
+        <!-- INTRO START -->
+        <section class="bg--neutral bg--img bg--img-light intro">
+            <div class="wrapper">
+                <div class="bubble bg--dark bubble--big tail tail--dark tail--top-left lazy-load" js-lazy-load>
                     <h1>Hello there!</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut bibendum velit. Donec rutrum dui elit, scelerisque ullamcorper nisl hendrerit id. Maecenas ut sapien at mi laoreet efficitur ac ut massa. Vestibulum tincidunt est nec imperdiet facilisis.
+                    <p class="bubble__paragraph">
+                        <strong>Making Lunch</strong> dolor sit amet, consectetur adipiscing elit. Praesent ut bibendum velit. Maecenas ut sapien at mi laoreet efficitur ac ut massa.
                     </p>
                 </div>
-                <div class="bubble bubble--light tail tail--dark tail--bottom-right lazy-load" js-lazy-load>
+                <div class="bubble bg--light tail tail--dark tail--bottom-right lazy-load" js-lazy-load>
                     <span>
-                        Lorem ipsum?
+                        Lorem ipsum dolor?
                     </span>
                 </div>
-                <div class="bubble bubble--dark tail tail--dark tail--bottom-left lazy-load" js-lazy-load>
+                <div class="bubble bg--dark tail tail--dark tail--bottom-left lazy-load" js-lazy-load>
                     <span>
-                        Praesent ut bibendum velit
+                        Ipsum dolor <span class="emoji"></span>
                     </span>
                 </div>
-                <div class="bubble bubble--light tail tail--dark tail--bottom-right lazy-load" js-lazy-load>
+                <div class="img__phone img__phone--first lazy-load" js-lazy-load></div>
+                <div class="bubble bg--dark tail tail--dark tail--bottom-left lazy-load" js-lazy-load>
                     <span>
-                        Donec rutrum dui elit
+                        Lorem ipsum
                     </span>
                 </div>
-                <div class="bubble bubble--dark tail tail--dark tail--bottom-left lazy-load" js-lazy-load>
+                <div class="bubble bg--light tail tail--dark tail--bottom-right lazy-load" js-lazy-load>
                     <span>
-                        Lorem ipsum :)
+                        Et iusto :)
                     </span>
                 </div>
-            </main>
+            </div>
         </section>
-
+        <!-- INTRO END -->
+        <!-- HERO START -->
+        <section class="bg--img bg--img-photo hero">
+            <div class="wrapper">
+                <div class="img__phone img__phone--second lazy-load" js-lazy-load></div>
+                <article class="bubble bubble--big bg--neutral tail tail--neutral tail--bottom-left lazy-load" js-lazy-load>
+                    <img src="images/logo.png" alt="Making Lunch logo" class="hero__logo">
+                    <h2 class="hero__header">Making Lunch</h2>
+                    <p class="hero__paragraph">
+                        Lorem ipsum dolor sit amet, conse ctetur adipi scing elit. Mauris tortor felis, cursus sit amet finibus non, gravida id dui. Mauris tortor felis, cursus sit amet finibus non.
+                    </p>
+                    <div class="flex flex--centered hero__features">
+                        <div class="flex__item">
+                            <svg class="icon">
+                                <use xlink:href="#map-marker"/>
+                            </svg>
+                            <span class="icon__description">Place</span>
+                        </div>
+                        <div class="flex__item flex__spacer">
+                            <span>+</span>
+                        </div>
+                        <div class="flex__item">
+                            <svg class="icon">
+                                <use xlink:href="#clock"/>
+                            </svg>
+                            <span class="icon__description">Time</span>
+                        </div class="flex__item">
+                        <div class="flex__item flex__spacer">
+                            <span>=</span>
+                        </div>
+                        <div class="flex__item">
+                            <svg class="icon">
+                                <use xlink:href="#people"/>
+                            </svg>
+                            <span class="icon__description">Lunch with interesting people</span>
+                        </div>
+                    </div>
+                    <small class="hero__secondary-text">
+                        In hac habitasse platea dictumst. Maecenas varius justo eget dui condimentum, nec dictum libero malesuada.
+                    </small>
+                </article>
+                <div class="bubble bubble--big bg--neutral tail tail--neutral tail--bottom-right lazy-load" js-lazy-load>
+                    <h2>Get the app.</h2>
+                    <div class="flex">
+                        <a href="" title="Download on the App Store">
+                            <img src="./images/app-store.svg" alt="Making Waves logo"/>
+                        </a>
+                        <a href="" title="Get it on Google Play">
+                            <img src="./images/google-play.svg" alt="Making Waves logo"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- HERO END -->
+        <!-- FOOTER START -->
+        <footer class="bg--dark bg--img bg--img-dark footer">
+            <div class="wrapper">
+                <img src="./images/mw-logo.svg" alt="Making Waves logo"/>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
         <script src="js/main.js"></script>
     </body>
 </html>
