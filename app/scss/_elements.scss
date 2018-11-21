@@ -6,6 +6,25 @@
 
 
 
+/* SVG sprites, icons
+========================================================================== */
+
+
+.icon {
+    fill: $contrastColor;
+    height: 3.6875rem;
+    max-width: 3.875rem;
+    width: auto;
+
+    &__description {
+        display: block;
+        font-size: 1rem;
+        line-height: 1.125rem;
+        padding-top: 0.5625rem;
+    }
+}
+
+
 /* Speech bubbles
 ========================================================================== */
 
@@ -13,33 +32,23 @@
 .bubble {
     border-radius: 1.875rem;
     box-sizing: border-box;
-    display: inline-block;
-    margin: 1.875rem 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin: 0.675rem 0;
     max-width: 77.19%;
-    padding: 1.875rem;
+    padding: 1.2rem 1.25rem 1.05rem 1.25rem;
 
     &--big {
         border-radius: 2.5rem;
+        padding: 1.6rem 1.25rem 2rem 1.875rem;
     }
 
-    &--light {
-        background-color: $bubbleLightColor;
-        color: $textDarkColor;
+    &__paragraph {
+        font-size: 1rem;
     }
 
-    &--dark {
-        background-color: $bubbleDarkColor;
-        color: $textLightColor;
-    }
-
-    &:nth-child(odd) {
-        clear: right;
-        float: left;
-    }
-
-    &:nth-child(even) {
-        clear: left;
-        float: right;
+    span {
+        font-family: "Avenir Next Bold";
     }
 }
 
@@ -50,27 +59,31 @@
 
 
 .tail {
-    box-sizing: border-box;
+    clear: both;
     position: relative;
+
+    &::before {
+        border-width: 2.5rem;
+        content: "";
+        display: block;
+        position: absolute;
+    }
 
     @each $v, $i in $sidesVertical {
         @each $h, $j in $sidesHorizontal {
             &--#{$v}-#{$h} {
                 border-#{$v}-#{$h}-radius: 0;
+                float: #{$h};
 
                 /* Borders for older browsers */
 
                 &::before {
                     background-image: linear-gradient(to #{$h}, rgba(0, 0, 0, 0.2), transparent);
-                    border-#{$h}: 1.875rem solid $bubbleDarkColor;
-                    border-#{$v}: 1.875rem solid transparent;
+                    border-#{$h}: 2.5rem solid $bubbleDarkColor;
+                    border-#{$v}: 2.5rem solid transparent;
                     border-#{$v}-style: solid;
                     border-#{$h}-style: solid;
-                    border-width: 1.875rem;
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    #{$v}: -1.875rem;
+                    #{$v}: -2.5rem;
                     #{$h}: 0;
                 }
             }
@@ -82,8 +95,8 @@
     @supports (clip-path: polygon(0 0, 0 0, 0 0)) or (-webkit-clip-path: polygon(0 0, 0 0, 0 0)) {
         &::before {
             border: none;
-            height: 1.875rem;
-            width: 1.875rem;
+            height: 2.5rem;
+            width: 2.5rem;
         }
 
         &--top-left::before {
@@ -100,6 +113,10 @@
 
         &--light::before {
             background-color: $bubbleLightColor;
+        }
+
+        &--neutral::before {
+            background-color: $baseColor;
         }
 
         &--dark::before {
@@ -121,7 +138,7 @@
     transition-timing-function: cubic-bezier(0.2, 1, 0.7, 1);
 
     /*
-     * Show content when element is in wievport
+     * Show content when element is in viewport
      * and when user has disabled javascript in their browser
      */
 
@@ -130,4 +147,57 @@
          opacity: 1;
          @include transform(translateY(0) scale(1));
      }
+}
+
+
+/* Utilities
+========================================================================== */
+
+
+.u-text--bold {
+    font-family: "Avenir Next Bold";
+}
+
+
+/* Backgrounds
+========================================================================== */
+
+
+.bg {
+    &--light {
+        background-color: $textLightColor;
+    }
+
+    &--neutral {
+        background-color: $baseColor;
+    }
+
+    &--dark {
+        background-color: $contrastColor;
+        color: $textLightColor;
+    }
+
+    &--img {
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        overflow: hidden;
+        width: 100%;
+
+        &-light {
+            background-image: url("../images/triangle-light.svg");
+            background-position: bottom right;
+        }
+
+        &-dark {
+            background-image: url("../images/triangle-dark.svg");
+            background-position: top right;
+        }
+
+        &-photo {
+            background-image: url("../images/bg.jpg");
+            background-position: center;
+            background-size: cover;
+            overflow: visible;
+        }
+    }
 }
