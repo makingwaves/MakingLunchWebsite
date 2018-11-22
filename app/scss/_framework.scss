@@ -10,12 +10,17 @@
 ========================================================================== */
 
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background-color: $baseColor;
-    color: $textLightColor;
+    color: $textDarkColor;
     font: normal 100%/1 "Avenir Next", Arial, sans-serif;
+    font-display: swap;
     text-rendering: optimizeLegibility;
 }
 
@@ -25,8 +30,11 @@ a {
 
 h1 {
     font-size: 4.06rem;
-    font-weight: 700;
-    margin-bottom: 0.15em;
+    margin-bottom: 0.3rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Avenir Next Bold";
 }
 
 p {
@@ -42,6 +50,7 @@ p {
 
 .wrapper {
     box-sizing: border-box;
+    height: 100%;
     margin: 0 auto;
     max-width: 100%;
     width: 570px;
@@ -57,12 +66,29 @@ p {
     }
 }
 
+/* Flex conteners and their elements */
+
 .flex {
     align-items: center;
     display: flex;
     justify-content: space-between;
+
     &--centered {
+        align-items: flex-start;
         justify-content: center;
+        text-align: center;
+    }
+
+    &__item {
+        max-width: 7.375rem;
+    }
+
+    &__spacer {
+        font-family: "Volte";
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1;
+        padding: 0 0 0 0;
     }
 }
 
@@ -76,7 +102,7 @@ p {
     font-size: 1.25rem;
     font-weight: bold;
     height: 3.75rem;
-    padding: 0 24px 0 10px;
+    padding: 0 1.5rem 0 0.625rem;
 
     &__button {
         background-color: $baseColor;
@@ -93,6 +119,135 @@ p {
 
     &__title {
         color: $baseColor;
+        line-height: 0.1rem;
+    }
+}
+
+
+/* Main content
+========================================================================== */
+
+
+.intro {
+    padding-top: 9.45rem;
+    padding-bottom: 1.7rem;
+
+    & .bubble:nth-child(3) {
+        margin-top: 3.15rem;
+    }
+
+    & .bubble:nth-child(5) {
+        margin-top: -0.15rem;
+    }
+
+    & .bubble:nth-child(6) {
+        margin-top: 1.4rem;
+    }
+}
+
+
+/* Hero content - image with app description
+========================================================================== */
+
+
+.hero {
+    // height: 830px;
+    height: 51.875rem;
+
+    & .wrapper {
+        position: relative;
+    }
+
+    &__logo {
+        width: 14.89%;
+    }
+
+    &__header {
+        font-size: 4.0625rem;
+        line-height: 3.5625rem;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+
+    &__paragraph {
+        line-height: 1.875rem;
+        text-align: left;
+    }
+
+    &__features {
+        padding-bottom: 1.7rem;
+        padding-top: 3rem;
+    }
+
+    &__secondary-text {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+    }
+
+    & .bubble {
+        position: absolute;
+        padding: 2rem 3.125rem 3.4375rem 3.125rem;
+
+        &:nth-child(1) {
+            max-width: 100%;
+            padding-top: 10.625rem;
+            top: 18.5rem;
+        }
+
+        &:nth-child(2) {
+            bottom: -26.2rem;
+            right: 0;
+            padding-top: 2rem;
+            padding-right: 3rem;
+            padding-bottom: 1.8rem;
+
+            &::after {
+                content: "";
+                clear: both;
+                display: block;
+            }
+        }
+
+        h2 {
+            padding-bottom: 0.75rem;
+        }
+    }
+
+    & .flex a:nth-child(2):last-child {
+        margin-left: 1rem;
+    }
+}
+
+
+/* Decorative content, images, phones
+========================================================================== */
+
+
+.img {
+    &__phone {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        &--first {
+            background-image: url("../images/phone1.png");
+            float: right;
+            height: 626px;
+            margin-right: -0.46rem;
+            margin-top: -6.8rem;
+            width: 480px;
+        }
+
+        &--second {
+            background-image: url("../images/phone2.png");
+            height: 614px;
+            left: 4.75rem;
+            position: relative;
+            top: -4.3125rem;
+            width: 440px;
+            z-index: 1;
+        }
     }
 }
 
@@ -102,13 +257,23 @@ p {
 
 
 .footer {
-
+    padding-top: 25.8125rem;
+    text-align: center;
 }
 
 
-/* Element states
+/* Pseudo elements and global element states
 ========================================================================== */
 
 
 ::-moz-selection { background: $accentColor }
      ::selection { background: $accentColor }
+
+
+ /* Other
+ ========================================================================== */
+
+
+ .svg-sprites {
+     display: none;
+ }
