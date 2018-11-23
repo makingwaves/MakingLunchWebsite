@@ -189,13 +189,13 @@ p {
         position: absolute;
         padding: 2rem 3.125rem 3.4375rem 3.125rem;
 
-        &:nth-child(1) {
+        &:nth-of-type(1) {
             max-width: 100%;
             padding-top: 10.625rem;
             top: 18.5rem;
         }
 
-        &:nth-child(2) {
+        &:nth-of-type(2) {
             bottom: -26.2rem;
             right: 0;
             padding-top: 2rem;
