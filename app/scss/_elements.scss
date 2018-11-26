@@ -134,7 +134,7 @@
     opacity: 0;
     @include transform(translateY(2rem) scale(1.15));
     transform-origin: 50% 0;
-    transition: 1s;
+    transition-duration: 1s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.7, 1);
 
     /*
@@ -180,7 +180,6 @@
     &--img {
         background-repeat: no-repeat;
         background-size: 100% auto;
-        overflow: hidden;
         width: 100%;
 
         &-light {
@@ -198,6 +197,14 @@
             background-position: center;
             background-size: cover;
             overflow: visible;
+        }
+
+        /* Clearfix */
+
+        &::after {
+            clear: both;
+            content: "";
+            display: block;
         }
     }
 }
