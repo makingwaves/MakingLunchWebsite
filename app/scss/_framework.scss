@@ -19,8 +19,7 @@ body {
     -webkit-font-smoothing: antialiased;
     background-color: $baseColor;
     color: $textDarkColor;
-    font: normal 100%/1 "Avenir Next", Arial, sans-serif;
-    font-display: swap;
+    font: normal 100%/1 "Avenir Next", Arial, Tahoma, sans-serif;
     text-rendering: optimizeLegibility;
 }
 
@@ -129,19 +128,29 @@ p {
 
 
 .intro {
-    padding-top: 9.45rem;
     padding-bottom: 1.7rem;
+    padding-top: 9.45rem;
+
+    & .bubble:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+
+    & .bubble:nth-child(2) {
+        animation-delay: 2s;
+    }
 
     & .bubble:nth-child(3) {
-        margin-top: 3.15rem;
+        margin-top: 3.13rem;
+        animation-delay: 3s;
     }
 
     & .bubble:nth-child(5) {
-        margin-top: -0.15rem;
+        margin-top: -0.14rem;
     }
 
     & .bubble:nth-child(6) {
         margin-top: 1.4rem;
+        animation-delay: 0.5s;
     }
 }
 
@@ -151,7 +160,6 @@ p {
 
 
 .hero {
-    // height: 830px;
     height: 51.875rem;
 
     & .wrapper {
@@ -196,7 +204,8 @@ p {
         }
 
         &:nth-of-type(2) {
-            bottom: -26.2rem;
+            animation-delay: 1s;
+            bottom: -26.25rem;
             right: 0;
             padding-top: 2rem;
             padding-right: 3rem;

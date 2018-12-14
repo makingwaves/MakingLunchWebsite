@@ -69,6 +69,11 @@
         position: absolute;
     }
 
+    /*
+    * Iterating over all sides to create classes
+    * for tails in each corner of the bubble
+    */
+
     @each $v, $i in $sidesVertical {
         @each $h, $j in $sidesHorizontal {
             &--#{$v}-#{$h} {
@@ -99,16 +104,28 @@
             width: 2.5rem;
         }
 
-        &--top-left::before {
-            @include clip(polygon(0 0, 100% 100%, 0 100%));
+        &--top-left {
+            transform-origin: 0 0;
+
+            &::before {
+                @include clip(polygon(0 0, 100% 100%, 0 100%));
+            }
         }
 
-        &--bottom-left::before {
-            @include clip(polygon(0 0, 100% 0, 0 100%));
+        &--bottom-left {
+            transform-origin: 0 100%;
+
+            &::before {
+                @include clip(polygon(0 0, 100% 0, 0 100%));
+            }
         }
 
-        &--bottom-right::before {
-            @include clip(polygon(0 0, 100% 0, 100% 100%));
+        &--bottom-right {
+            transform-origin: 100% 100%;
+
+            &::before {
+                @include clip(polygon(0 0, 100% 0, 100% 100%));
+            }
         }
 
         &--light::before {
@@ -132,20 +149,19 @@
 
 .lazy-load {
     opacity: 0;
-    @include transform(translateY(2rem) scale(1.15));
-    transform-origin: 50% 0;
-    transition-duration: 1s;
-    transition-timing-function: cubic-bezier(0.2, 1, 0.7, 1);
 
     /*
      * Show content when element is in viewport
      * and when user has disabled javascript in their browser
      */
 
-     &--show,
+     &--show.bubble,
      .no-js & {
-         opacity: 1;
-         @include transform(translateY(0) scale(1));
+         animation: lazyLoad 0.75s linear 0s 1 normal both;
+     }
+
+     &--show.img__phone {
+         animation: easeIntoView 1s cubic-bezier(0.2, 1, 0.7, 1) 0s 1 normal both;
      }
 }
 
