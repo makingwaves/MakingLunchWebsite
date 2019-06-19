@@ -1,4 +1,4 @@
-const { src, dest, series} = require('gulp');
+const { src, dest, series, watch} = require('gulp');
 const sass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
 const babel = require('gulp-babel');
@@ -52,5 +52,12 @@ function html() {
         .pipe(dest('dist'));
 }
 
+function watchChanges() {
+    watch('app/scss/**/*.scss', css);
+    watch('app/js/main.js', js);
+    watch('app/**/*.html', html);
+}
+
 exports.build = series(clean, js, css, html, fonts, images);
+exports.watch = watchChanges;
 

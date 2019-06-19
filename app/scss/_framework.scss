@@ -131,26 +131,17 @@ p {
     padding-bottom: 1.7rem;
     padding-top: 9.45rem;
 
-    & .bubble:nth-child(1) {
-        animation-delay: 0.5s;
-    }
-
-    & .bubble:nth-child(2) {
-        animation-delay: 2s;
-    }
-
     & .bubble:nth-child(3) {
         margin-top: 3.13rem;
-        animation-delay: 3s;
     }
 
     & .bubble:nth-child(5) {
-        margin-top: -0.14rem;
+        margin-top: -18.14rem;
     }
 
     & .bubble:nth-child(6) {
-        margin-top: 1.4rem;
-        animation-delay: 0.5s;
+        margin-top: 1.6rem;
+        margin-bottom: 5rem;
     }
 }
 
