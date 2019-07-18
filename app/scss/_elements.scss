@@ -11,16 +11,16 @@
 
 
 .icon {
-    fill: $contrastColor;
-    height: 3.6875rem;
+    fill: $violet;
+    height: 60px;
     max-width: 100%;
     width: auto;
 
     &__description {
         display: block;
         font-size: 1rem;
-        line-height: 1.125rem;
-        padding-top: 0.5625rem;
+        line-height: 1.13;
+        padding-top: 12px;
     }
 }
 
@@ -30,25 +30,62 @@
 
 
 .bubble {
-    border-radius: 1.875rem;
+    border-radius: 30px;
     box-sizing: border-box;
+    font-family: $primaryFontBold;
     font-size: 1.5rem;
     line-height: 1;
-    margin: 0.675rem 0;
-    max-width: 77.19%;
-    padding: 1.2rem 1.25rem 1.05rem 1.25rem;
+    margin: 0 0 35px 0;
+    padding: 15px 25px;
+
+    @include respondTo(xxs) {
+        max-width: 440px;
+    }
 
     &--big {
-        border-radius: 2.5rem;
-        padding: 1.6rem 1.25rem 2rem 1.875rem;
+        border-radius: 40px;
+        max-width: 100%;
+        padding: 30px 30px 20px 30px;
     }
 
     &__paragraph {
+        font-family: $primaryFont;
         font-size: 1rem;
+        line-height: 1.13;
     }
 
-    span {
-        font-family: "Avenir Next Bold";
+    &__link {
+        background-color: $violet;
+        border-radius: 12px;
+        max-width: 147px;
+        transition: background-color 0.2s;
+
+        & + & {
+            margin-left: 15px;
+        }
+
+        > svg {
+            display: block;
+            max-height: 50px;
+            max-width: 100%;
+        }
+
+        &:focus,
+        &:hover {
+            background-color: $violetDarker;
+            outline: none;
+        }
+
+        &:focus {
+            box-shadow: 0 -3px 0 $turquoise,
+                        0 3px 0 $turquoise,
+                        3px 0 0 $turquoise,
+                        -3px 0 0 $turquoise;
+        }
+    }
+
+    &__header {
+        margin-bottom: 10px;
     }
 }
 
@@ -63,7 +100,7 @@
     position: relative;
 
     &::before {
-        border-width: 2.5rem;
+        border-width: 40px;
         content: "";
         display: block;
         position: absolute;
@@ -84,11 +121,11 @@
 
                 &::before {
                     background-image: linear-gradient(to #{$h}, rgba(0, 0, 0, 0.2), transparent);
-                    border-#{$h}: 2.5rem solid $bubbleDarkColor;
-                    border-#{$v}: 2.5rem solid transparent;
+                    border-#{$h}: 40px solid $violet;
+                    border-#{$v}: 40px solid transparent;
                     border-#{$v}-style: solid;
                     border-#{$h}-style: solid;
-                    #{$v}: -2.5rem;
+                    #{$v}: -40px;
                     #{$h}: 0;
                 }
             }
@@ -100,15 +137,15 @@
     @supports (clip-path: polygon(0 0, 0 0, 0 0)) or (-webkit-clip-path: polygon(0 0, 0 0, 0 0)) {
         &::before {
             border: none;
-            height: 2.5rem;
-            width: 2.5rem;
+            height: 40px;
+            width: 40px;
         }
 
         &--top-left {
             transform-origin: 0 0;
 
             &::before {
-                @include clip(polygon(0 0, 100% 100%, 0 100%));
+                @include clip(polygon(0 0, 40px 40px, 0 40px));
             }
         }
 
@@ -116,7 +153,7 @@
             transform-origin: 0 100%;
 
             &::before {
-                @include clip(polygon(0 0, 100% 0, 0 100%));
+                @include clip(polygon(0 0, 40px 0, 0 40px));
             }
         }
 
@@ -124,20 +161,20 @@
             transform-origin: 100% 100%;
 
             &::before {
-                @include clip(polygon(0 0, 100% 0, 100% 100%));
+                @include clip(polygon(0 0, 40px 0, 40px 40px));
             }
         }
 
         &--light::before {
-            background-color: $bubbleLightColor;
+            background-color: $white;
         }
 
         &--neutral::before {
-            background-color: $baseColor;
+            background-color: $cream;
         }
 
         &--dark::before {
-            background-color: $bubbleDarkColor;
+            background-color: $violet;
         }
     }
 }
@@ -171,7 +208,17 @@
 
 
 .u-text--bold {
-    font-family: "Avenir Next Bold";
+    font-family: $primaryFontBold;
+}
+
+/* Clearfix */
+
+.u-clearfix {
+    &::after {
+        clear: both;
+        content: "";
+        display: block;
+    }
 }
 
 
@@ -181,58 +228,77 @@
 
 .bg {
     &--light {
-        background-color: $textLightColor;
+        background-color: $white;
     }
 
     &--neutral {
-        background-color: $baseColor;
+        background-color: $cream;
     }
 
     &--dark {
-        background-color: $contrastColor;
-        color: $textLightColor;
+        background-color: $violet;
+        color: $white;
     }
 
-    &--img {
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-        width: 100%;
+    &--phone {
+        background: url("../images/phone1.png") no-repeat center right / auto 100%;
+        padding: 38px 0 215px 0;
 
-        &-light {
-            background-image: url("../images/triangle-light.svg");
-            background-position: bottom right;
+        @include respondTo(xxs) {
+            padding-bottom: 328px;
         }
 
-        &-dark {
-            background-image: url("../images/triangle-dark.svg");
-            background-position: top right;
+        @include respondTo(xs) {
+            padding-bottom: 428px;
         }
 
-        &-photo {
-            background-image: url("../images/bg.jpg");
-            background-position: center;
-            background-size: cover;
-            overflow: visible;
+        @include respondTo(s) {
+            padding-bottom: 528px;
         }
+    }
+}
 
-        /* Clearfix */
 
+/* Emojis
+========================================================================== */
+
+
+.emoji {
+    background-image: url("../images/emoji-sprite.png");
+    background-size: 100% 300%;
+    display: inline-block;
+    height: 30px;
+    margin: 0 5px -5px 5px;
+    width: 30px;
+
+    & + & {
+        margin-left: 0;
+    }
+
+    &--heart {
+        background-position: 0 0;
+    }
+
+    &--thumbs-up {
+        background-position: 0 100%;
+    }
+
+    &--sushi {
+        background-position: 0 200%;
+    }
+}
+
+
+/* List of messages
+========================================================================== */
+
+
+.message-list {
+    &__item {
         &::after {
             clear: both;
             content: "";
             display: block;
         }
-    }
-}
-
-.emoji {
-    display: inline-block;
-    & img {
-        width: 40px;
-        height: 40px;
-        display: block;
-        margin-bottom: -10px;
-        margin-left: 5px;
-        margin-right: 5px;
     }
 }

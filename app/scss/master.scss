@@ -12,13 +12,17 @@
 
 /* Color variables  */
 
-$accentColor: #63ffd3;
-$baseColor: #eee6e4;
-$bubbleDarkColor: #5b4663;
-$bubbleLightColor: #ffffff;
-$contrastColor: #5b4663;
-$textDarkColor: #5b4663;
-$textLightColor: #ffffff;
+$cream: #eee6e4;
+$creamDarker: #e4dad7;
+$turquoise: #63FFD3;
+$violet: #5B4663;
+$violetDarker: #513F58;
+$white: #FFFFFF;
+
+/* Fonts */
+
+$primaryFont: "Avenir Next", sans-serif;
+$primaryFontBold: "Avenir Next Bold", sans-serif;
 
 /* Other variables  */
 
@@ -63,19 +67,6 @@ $sidesVertical: ["top", "bottom"];
 }
 
 
-@keyframes easeIntoView {
-    from {
-        @include transform(translateY(2rem));
-        opacity: 0;
-    }
-
-    to {
-        @include transform(translateY(0) scale(1));
-        opacity: 1;
-    }
-}
-
-
 /* Fonts
 ========================================================================== */
 
@@ -100,21 +91,12 @@ $sidesVertical: ["top", "bottom"];
          url("../fonts/AvenirNext-Bold.ttf") format("truetype");
 }
 
-@font-face {
-    font-display: swap;
-    font-family: "Volte";
-    font-style: normal;
-    font-weight: 700;
-    src: url("../fonts/Volte.eot?#iefix") format("embedded-opentype"),
-         url("../fonts/Volte.woff") format("woff"),
-         url("../fonts/Volte.ttf") format("truetype");
-}
-
 
 /* Importing css files
 ========================================================================== */
 
 
+@import "respond-to";
 @import "reset";
 @import "framework";
 @import "elements";

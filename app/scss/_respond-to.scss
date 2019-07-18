@@ -1,0 +1,109 @@
+/* ==========================================================================
+ * RESPOND TO
+ * Breakpoint definitions
+========================================================================== */
+
+
+
+
+/* Viewport sizes
+========================================================================== */
+
+
+$xxSmall: 375px;
+$xSmall: 480px;
+$small: 768px;
+$medium: 1024px;
+$large: 1440px;
+$xLarge: 1600px;
+
+
+/* Mixins
+========================================================================== */
+
+
+@mixin respondTo($breakpoint) {
+  /* XXS */
+
+  @if $breakpoint == "xxs" {
+    @media screen and (min-width: $xxSmall + 1) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "lt-xxs" {
+    @media screen and (max-width: $xxSmall) {
+      @content;
+    }
+  }
+
+  /* XS */
+
+  @if $breakpoint == "xs" {
+    @media screen and (min-width: $xSmall + 1) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "lt-xs" {
+    @media screen and (max-width: $xSmall) {
+      @content;
+    }
+  }
+
+  /* S */
+
+  @if $breakpoint == "s" {
+    @media screen and (min-width: $small + 1) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "lt-s" {
+    @media screen and (max-width: $small) {
+      @content;
+    }
+  }
+
+  /* M */
+
+  @if $breakpoint == "m" {
+    @media screen and (min-width: $medium + 1) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "lt-m" {
+    @media screen and (max-width: $medium) {
+      @content;
+    }
+  }
+
+  /* L */
+
+  @if $breakpoint == "l" {
+    @media screen and (min-width: $large + 1) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "lt-l" {
+    @media screen and (max-width: $large) {
+      @content;
+    }
+  }
+
+  /* XL */
+
+  @if $breakpoint == "xl" {
+    @media screen and (min-width: $xLarge + 1) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "lt-xl" {
+    @media screen and (max-width: $xLarge) {
+      @content;
+    }
+  }
+}

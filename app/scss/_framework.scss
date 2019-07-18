@@ -10,17 +10,18 @@
 ========================================================================== */
 
 
+* {
+    box-sizing: border-box;
+}
+
 html {
-    scroll-behavior: smooth;
+    max-width: 100%;
 }
 
 body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    background-color: $baseColor;
-    color: $textDarkColor;
-    font: normal 100%/1 "Avenir Next", Arial, Tahoma, sans-serif;
-    text-rendering: optimizeLegibility;
+    background-color: $cream;
+    color: $violet;
+    font: normal 100%/1 $primaryFont;
 }
 
 a {
@@ -28,16 +29,16 @@ a {
 }
 
 h1 {
-    font-size: 4.06rem;
-    margin-bottom: 0.3rem;
+    font-size: 4.0625rem;
+    margin-bottom: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Avenir Next Bold";
+    font-family: $primaryFontBold;
 }
 
 p {
-    line-height: 1.125rem;
+    line-height: 1.125;
     text-align: justify;
     text-align-last: left;
 }
@@ -48,11 +49,10 @@ p {
 
 
 .wrapper {
-    box-sizing: border-box;
-    height: 100%;
     margin: 0 auto;
     max-width: 100%;
-    width: 570px;
+    padding: 0 20px;
+    width: 610px;
 
     &--big {
         width: 1000px;
@@ -60,6 +60,7 @@ p {
 
     &--fixed {
         position: fixed;
+        top: 0;
         width: 100%;
         z-index: 2;
     }
@@ -70,20 +71,37 @@ p {
 .flex {
     align-items: center;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 
+    &.hero__features {
+        @include respondTo(lt-xxs) {
+            flex-direction: column;
+        }
+    }
+
     &--centered {
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         text-align: center;
+
+        @include respondTo(xxs) {
+            align-items: flex-start;
+        }
     }
 
     &__item {
-        max-width: 7.375rem;
+        @include respondTo(xxs) {
+            max-width: 80px;
+        }
+
+        @include respondTo(xs) {
+            max-width: 118px;
+        }
     }
 
     &__spacer {
-        font-family: "Volte";
+        font-family: $primaryFontBold;
         font-size: 3.5rem;
         font-weight: 700;
         line-height: 1;
@@ -97,28 +115,53 @@ p {
 
 
 .header {
-    border-radius: 0 0 1.0625rem 1.0625rem;
+    border-radius: 0 0 17px 17px;
     font-size: 1.25rem;
     font-weight: bold;
-    height: 3.75rem;
-    padding: 0 1.5rem 0 0.625rem;
+    height: 60px;
+    padding: 0 25px 0 10px;
+
+    a {
+        &:focus {
+            color: $turquoise;
+            outline: none;
+        }
+    }
 
     &__button {
-        background-color: $baseColor;
-        border-radius: 1.0625rem;
-        color: $textDarkColor;
+        background-color: $cream;
+        border: none;
+        border-radius: 18px;
+        color: $violet;
+        cursor: pointer;
         font-size: 1rem;
-        padding: 0.625rem 1.625rem;
+        line-height: 1.375;
+        outline: none;
+        padding: 8px 22px 6px 22px;
+        transition: background 0.25s;
+        white-space: nowrap;
+
+        @include respondTo(lt-xxs) {
+            padding: 8px 15px 6px 15px;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $turquoise;
+        }
     }
 
     &__logo {
-        height: 2.5rem;
-        padding-right: 0.875rem;
+        height: 30px;
+        padding-right: 14px;
+
+        @include respondTo(xxs) {
+            height: 40px;
+        }
     }
 
     &__title {
-        color: $baseColor;
-        line-height: 0.1rem;
+        padding-top: 5px;
     }
 }
 
@@ -128,21 +171,9 @@ p {
 
 
 .intro {
-    padding-bottom: 1.7rem;
-    padding-top: 9.45rem;
-
-    & .bubble:nth-child(3) {
-        margin-top: 3.13rem;
-    }
-
-    & .bubble:nth-child(5) {
-        margin-top: -18.14rem;
-    }
-
-    & .bubble:nth-child(6) {
-        margin-top: 1.6rem;
-        margin-bottom: 5rem;
-    }
+    margin: 120px 0 0 0;
+    overflow: hidden;
+    padding: 40px 0;
 }
 
 
@@ -151,71 +182,101 @@ p {
 
 
 .hero {
-    height: 51.875rem;
+    background-color: $violet;
+    padding: 105px 0 20px 0;
+    position: relative;
 
-    & .wrapper {
-        position: relative;
+    @include respondTo(xs) {
+        padding-top: 205px;
+    }
+
+    @include respondTo(s) {
+        padding-top: 305px;
+    }
+
+    &__images {
+        background: url("../images/bg.jpg") no-repeat center top / cover;
+        height: 830px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+        }
+
+        &::before {
+            background: url("../images/phone2.png") no-repeat center / auto 100%;
+            height: 344px;
+            left: 0;
+            top: -55px;
+            width: 100%;
+            z-index: 1;
+
+            @include respondTo(lt-xs) {
+                background-position: 75% 50%;
+            }
+
+            @include respondTo(xxs) {
+                height: 394px;
+            }
+
+            @include respondTo(xs) {
+                height: 494px;
+            }
+
+            @include respondTo(s) {
+                height: 594px;
+            }
+        }
     }
 
     &__logo {
-        width: 14.89%;
+        height: 70px;
     }
 
     &__header {
         font-size: 4.0625rem;
-        line-height: 3.5625rem;
-        padding-bottom: 1rem;
-        padding-top: 1rem;
+        line-height: 0.88;
+        padding: 18px 0;
     }
 
     &__paragraph {
-        line-height: 1.875rem;
+        font-family: $primaryFont;
+        line-height: 1.25;
         text-align: left;
     }
 
     &__features {
-        padding-bottom: 1.7rem;
-        padding-top: 3rem;
+        padding-top: 50px;
     }
 
     &__secondary-text {
         font-size: 1rem;
         font-weight: 400;
-        line-height: 1.25rem;
+        line-height: 1.13;
     }
 
     & .bubble {
-        position: absolute;
-        padding: 2rem 3.125rem 3.4375rem 3.125rem;
-
         &:nth-of-type(1) {
-            max-width: 100%;
-            padding-top: 10.625rem;
-            top: 18.5rem;
-        }
+            padding: 150px 30px 50px 30px;
 
-        &:nth-of-type(2) {
-            animation-delay: 1s;
-            bottom: -26.25rem;
-            right: 0;
-            padding-top: 2rem;
-            padding-right: 3rem;
-            padding-bottom: 1.8rem;
-
-            &::after {
-                content: "";
-                clear: both;
-                display: block;
+            @include respondTo(xs) {
+                padding: 170px 50px 50px 50px;
             }
         }
 
-        h2 {
-            padding-bottom: 0.75rem;
-        }
-    }
+        &:nth-of-type(2) {
+            padding: 28px 30px 32px 30px;
 
-    & .flex a:nth-child(2):last-child {
-        margin-left: 1rem;
+            @include respondTo(xs) {
+                padding: 28px 50px 32px 50px;
+            }
+        }
     }
 }
 
@@ -224,29 +285,39 @@ p {
 ========================================================================== */
 
 
-.img {
-    &__phone {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
+.triangle {
+    &:not(.hero__images) {
+        position: relative;
+    }
 
-        &--first {
-            background-image: url("../images/phone1.png");
-            float: right;
-            height: 626px;
-            margin-right: -0.46rem;
-            margin-top: -6.8rem;
-            width: 480px;
+    &::after {
+        border-left: 100vw solid transparent;
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+    }
+
+    &--top {
+        &::after {
+            border-top: 29vw solid $violetDarker;
+            top: 100%;
+
+            @include respondTo(xl) {
+                border-top-width: 417px;
+            }
         }
+    }
+    
+    &--bottom {
+        &::after {
+            border-bottom: 59vw solid $creamDarker;
+            bottom: 0;
+            z-index: -1;
 
-        &--second {
-            background-image: url("../images/phone2.png");
-            height: 614px;
-            left: 4.75rem;
-            position: relative;
-            top: -4.3125rem;
-            width: 440px;
-            z-index: 1;
+            @include respondTo(xl) {
+                border-bottom-width: 851px;
+            }
         }
     }
 }
@@ -257,8 +328,22 @@ p {
 
 
 .footer {
-    padding-top: 25.8125rem;
+    padding: 65px 0 60px 0;
     text-align: center;
+
+    a:focus {
+        fill: $turquoise;
+        outline: none;
+
+        & svg {
+            fill: $turquoise;
+        }
+    }
+
+    &__logo {
+        fill: $white;
+        height: 21px;
+    }
 }
 
 
@@ -266,8 +351,8 @@ p {
 ========================================================================== */
 
 
-::-moz-selection { background: $accentColor }
-     ::selection { background: $accentColor }
+::-moz-selection { background: $turquoise }
+     ::selection { background: $turquoise }
 
 
  /* Other
@@ -275,5 +360,8 @@ p {
 
 
  .svg-sprites {
-     display: none;
+     height: 0;
+     position: absolute;
+     visibility: hidden;
+     width: 0;
  }

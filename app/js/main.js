@@ -2,6 +2,7 @@
     history.scrollRestoration = "manual";
 
     const lazyJSSelector = "[js-lazy-load]";
+    const scrollButtonAttribute = "js-scroll";
     const lazyClass = "lazy-load--show";
     const noJSClass = "no-js";
     const lazyOffset = 200;
@@ -34,7 +35,6 @@
             return;
         }
 
-
         lazyLoadElements.forEach(function(element, index) {
             if (isInViewport(element, lazyOffset)) {
                 lastDelay = (index + 1) * delayLength;
@@ -54,12 +54,27 @@
                     } else {
                         element.style.animationDelay =  '0.5s';
                     }
-
                 }
+            });
+        });
+    }
+
+    function initScrollButton() {
+        let button = document.querySelector(`[${scrollButtonAttribute}]`);
+        let targetId = button.getAttribute(scrollButtonAttribute);
+        let target = document.querySelector(`#${targetId}`);
+
+        button.addEventListener("click", function() {
+            target.focus();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "start"
             });
         });
     }
 
     isUsingJS();
     initLazyLoad();
+    initScrollButton();
 })();
