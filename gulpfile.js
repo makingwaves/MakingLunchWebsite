@@ -58,6 +58,11 @@ function watchChanges() {
     watch('app/**/*.html', html);
 }
 
+function ghPages() {
+    return ghpages.publish('dist', function(err) {});
+}
+
 exports.build = series(clean, js, css, html, fonts, images);
 exports.watch = watchChanges;
+exports.publish = ghPages;
 
