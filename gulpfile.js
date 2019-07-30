@@ -7,6 +7,7 @@ const htmlMin = require('gulp-htmlmin');
 const imageMin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 const del = require('del');
+const ghpages = require('gh-pages');
 
 function clean() {
     return del('dist');
