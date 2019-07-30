@@ -5,8 +5,8 @@
     const scrollButtonAttribute = "js-scroll";
     const lazyClass = "lazy-load--show";
     const noJSClass = "no-js";
-    const lazyOffset = 200;
-    const delayLength = 1;
+    const lazyOffset = 50;
+    const delayLength = 0.75;
 
     function isUsingJS() {
         document.querySelector("html").classList.remove(noJSClass);
@@ -41,18 +41,23 @@
                 element.classList.add(lazyClass);
                 element.style.animationDelay = lastDelay + 's';
             }
+        });
 
-            window.addEventListener("scroll", function() {
+        window.addEventListener("scroll", function() {
+            let elementsAnimated = 0;
+            lazyLoadElements.forEach(function(element, index) {
                 if (isInViewport(element, lazyOffset) && !element.classList.contains(lazyClass)) {
+                    elementsAnimated++;
                     element.classList.add(lazyClass);
 
                     const differenceInSeconds = getTimeDifferenceInSeconds(startDate, new Date());
                     if(differenceInSeconds < lastDelay) {
-                        lastDelay = lastDelay + delayLength - differenceInSeconds;
-                        element.style.animationDelay = lastDelay + 's'
-
+                        lastDelay = lastDelay + (delayLength * (elementsAnimated + 1)) - differenceInSeconds;
+                        element.style.animationDelay = lastDelay + 's';
                     } else {
-                        element.style.animationDelay =  '0.5s';
+                        if(lastDelay === delayLength) lastDelay += delayLength;
+                        else lastDelay = delayLength;
+                        element.style.animationDelay =  lastDelay + 's';
                     }
                 }
             });
